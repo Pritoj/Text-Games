@@ -1,4 +1,4 @@
-const Action =require('./../Action')
+const Action = require('./../Action')
 const {
   InvalidActionAddedError,
   ActionNameClashError
@@ -17,24 +17,35 @@ const {
 let actions = [];
 
 class Position {
-  constructor(name){
+  constructor(name) {
     this.name = name;
   }
 
-  setName(name){
+  /**
+   * Set the name for this position. This will be used later,
+   * probably in the room.
+   * 
+   * This method is chainable.
+   * @param {string} name 
+   */
+  setName(name) {
     this.name = name;
     return this;
   }
 
-  addAction(action){
+  /**
+   * This adds an action to the actions list. It checks if a valid action is provided and if it doesn't clash with any existing actions
+   * @param {Action} action 
+   */
+  addAction(action) {
     // Check if it's a proper action
-    if(!(action instanceof Action)){
+    if (!(action instanceof Action)) {
       // if it's an invalid action
       throw new InvalidActionAddedError();
     }
 
     // Check if we are getting an action with the same name
-    if(!!this.getAction(action.name)){
+    if (!!this.getAction(action.name)) {
       throw new ActionNameClashError();
     }
 
@@ -44,12 +55,19 @@ class Position {
     return this;
   }
 
-  getAction(actionName){
+  /**
+   * Gets a specific action.
+   * @param {string} actionName 
+   */
+  getAction(actionName) {
     // get an action with the name `actionName`
-    return actions.find((v)=>v.name === actionName);
+    return actions.find((v) => v.name === actionName);
   }
 
-  get actions(){
+  /**
+   * Gets the list of all actions for this position.
+   */
+  get actions() {
     // Just return all actions
     return actions;
   }

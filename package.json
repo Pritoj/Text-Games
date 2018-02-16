@@ -7,5 +7,12 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Pritoj Singh",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "chai-spies": "^1.0.0"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.0.1"
+  }
 }
