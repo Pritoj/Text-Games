@@ -1,3 +1,6 @@
+/**
+ * This class is when we try to add something other than an Action
+ */
 class InvalidActionAddedError extends Error {
   constructor(...args){
     super(...args)
@@ -7,6 +10,9 @@ class InvalidActionAddedError extends Error {
   }
 }
 
+/**
+ * This class is when we are trying to add an action which clashes with one that already exists
+ */
 class ActionNameClashError extends Error {
   constructor(...args){
     super(...args)

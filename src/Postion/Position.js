@@ -1,8 +1,8 @@
-const Action = require('./../Action')
+const { Action } = require('../Action')
 const {
   InvalidActionAddedError,
   ActionNameClashError
-} = require('./PositionErrors');
+} = require('./PositionErrors')
 
 /**
  * This defines a position in the room.
@@ -14,11 +14,11 @@ const {
  */
 
 // all actions in this Position. This will be tested first
-let actions = [];
+let actions = []
 
 class Position {
   constructor(name) {
-    this.name = name;
+    this.name = name
   }
 
   /**
@@ -28,9 +28,9 @@ class Position {
    * This method is chainable.
    * @param {string} name 
    */
-  setName(name) {
-    this.name = name;
-    return this;
+  setPositionName(name) {
+    this.name = name
+    return this
   }
 
   /**
@@ -41,18 +41,18 @@ class Position {
     // Check if it's a proper action
     if (!(action instanceof Action)) {
       // if it's an invalid action
-      throw new InvalidActionAddedError();
+      throw new InvalidActionAddedError()
     }
 
     // Check if we are getting an action with the same name
     if (!!this.getAction(action.name)) {
-      throw new ActionNameClashError();
+      throw new ActionNameClashError()
     }
 
     // Clearly it passed all the checks i could think of
     // So might as well add it to the actions list
-    actions.push(action);
-    return this;
+    actions.push(action)
+    return this
   }
 
   /**
@@ -61,7 +61,7 @@ class Position {
    */
   getAction(actionName) {
     // get an action with the name `actionName`
-    return actions.find((v) => v.name === actionName);
+    return actions.find((v) => v.name === actionName)
   }
 
   /**
@@ -69,6 +69,8 @@ class Position {
    */
   get actions() {
     // Just return all actions
-    return actions;
+    return actions
   }
 }
+
+module.exports = Position;

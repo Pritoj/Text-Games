@@ -24,5 +24,6 @@ They can be added to a Game (e.g. `SaveAction`), Level (e.g. `ExitLevelAction`),
 
 These are all the methods available in an `Action`. If the methos is chainable it will be mentioned
 
-####   setActionName(name: string)
+#### setActionName(name: string)
 This sets the action's name
+

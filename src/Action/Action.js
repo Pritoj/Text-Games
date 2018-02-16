@@ -3,20 +3,20 @@
  */
 
 const defaultResponse = (action, engine, character) => {
-  console.log(`${action.name} successful`);
+  console.log(`${action.name} successful`)
 }
 
 class Action {
   constructor(name) {
     // assign name to this action
-    this.name = name;
+    this.name = name
     
     // set a default description, hopefully will be added later
-    this.description = `This action is the ${name} action. Much amaze`;
+    this.description = `This action is the ${name} action. Much amaze`
     // set to a default response
-    this.response = defaultResponse;
+    this.response = defaultResponse
     
-    this.availability = (action, engine, character)=>(true);
+    this.availability = (action, engine, character)=>(true)
   }
   
  /**
@@ -25,8 +25,8 @@ class Action {
   * @param {string} name 
   */
   setActionName(name){
-    this.name = name;
-    return this;
+    this.name = name
+    return this
   }
 
   /**
@@ -34,7 +34,7 @@ class Action {
    * @param {string} desc 
    */
   setActionDescription(desc){
-    this.description = desc;
+    this.description = desc
   }
 
   /**
@@ -43,7 +43,7 @@ class Action {
    * @param {function} resp 
    */
   setActionResponse(resp){
-    this.response = resp;
+    this.response = resp
   }
 
   /**
@@ -53,8 +53,8 @@ class Action {
    */
   setAvailablity(availability){
     // set the availability to the function passed so it'll be checked
-    this.availability = availability;
+    this.availability = availability
   }
 }
 
-module.exports = Action;
+module.exports = Action
