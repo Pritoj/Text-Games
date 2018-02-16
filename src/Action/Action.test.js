@@ -53,4 +53,25 @@ describe('Check if we can create an action with this name', () => {
 
     chaiSpy.should.have.been.called.with(NewAction)
   })
+
+  it('Should match to the name if no matcher is given', () => {
+    let NewAction = new Action(testActionName)
+
+    NewAction.matches(testActionName).should.equal(true)
+  })
+
+  it('Should match to the matching function', () => {
+    let NewAction = new Action(testActionName)
+
+    NewAction.matches(testActionName).should.equal(true)
+
+    NewAction
+      .setMatcher((command)=>{
+        return command === 'jinga'
+      })
+    
+      NewAction.matches(testActionName).should.equal(false)
+
+      NewAction.matches('jinga').should.equal(true)
+  })
 })

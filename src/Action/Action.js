@@ -17,6 +17,8 @@ class Action {
     this.response = defaultResponse
     
     this.availability = (action, engine, character)=>(true)
+
+    this.matches = (command) => (name === command)
   }
   
  /**
@@ -54,6 +56,14 @@ class Action {
   setAvailablity(availability){
     // set the availability to the function passed so it'll be checked
     this.availability = availability
+  }
+
+  /**
+   * This must return a true value for this action to be activated
+   * @param {function} predicate 
+   */
+  setMatcher(predicate) {
+    this.matches = predicate;
   }
 }
 
