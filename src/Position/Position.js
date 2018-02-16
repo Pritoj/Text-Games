@@ -1,5 +1,6 @@
-const { WithActionList } = require('../WithActionList')
-
+const { NameAndDescription } = require('../NameAndDescription')
+const { Action } = require('../Action')
+const { ObjectList } = require('../ObjectList')
 /**
  * This defines a position in the room.
  * It can be north, south east west etc. to invoke this usually we will use 
@@ -9,9 +10,10 @@ const { WithActionList } = require('../WithActionList')
  * all the parents i.e. Room, level and game
  */
 
-class Position extends WithActionList{
+class Position extends NameAndDescription{
   constructor(name) {
     super(name)
+    this.actions = new ObjectList(Action,'name')
   }
 }
 

@@ -1,10 +1,7 @@
-const {
-  PositionNameSceneClashError,
-  InvalidPositionAddedSceneError
-} = require('./SceneErrors')
+const { NameAndDescription } = require('../NameAndDescription');
 
 const { Position } = require('../Position')
-const { WithActionList } = require('../WithActionList')
+const { Action } = require('../Action')
 /**
  * This is the class for a scene.
  * A scene is a combination of many positions.
@@ -13,51 +10,12 @@ const { WithActionList } = require('../WithActionList')
 
 var positions = [];
 
-class Scene extends WithActionList{
+class Scene extends NameAndDescription {
   constructor(name) {
     super(name)
+    this.actions = new ObjectList(Action, 'name')
+    this.positions = new ObjectList(Position, 'name')
   }
-
-  /**
-   * This adds an position to the positions list. It checks if a valid position is provided and if it doesn't clash with any existing positions
-   * @param {Position} position 
-   */
-  addPosition(position) {
-    // Check if it's a proper position
-    if (!(position instanceof Position)) {
-      // if it's an invalid position
-      throw new InvalidPositionAddedSceneError()
-    }
-
-    // Check if we are getting a position with the same name
-    if (!!this.getPosition(position.name)) {
-      throw new PositionNameSceneClashError()
-    }
-
-    // Clearly it passed all the checks i could think of
-    // So might as well add it to the positions list
-    positions.push(position)
-    return this
-  }
-
-  /**
-   * Gets a specific position.
-   * @param {string} positionName 
-   */
-  getPosition(positionName) {
-    // get a position with the name `positionName`
-    return positions.find((v) => v.name === positionName)
-  }
-
-  /**
-   * Gets the list of all positions for this scene.
-   */
-  get positions() {
-    // Just return all positions
-    return positions
-  }
-
-
 }
 
 module.exports = Scene;

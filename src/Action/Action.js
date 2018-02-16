@@ -1,3 +1,4 @@
+const { NameAndDescription } = require('../NameAndDescription')
 /**
  * This file is restricted for actions.
  */
@@ -6,37 +7,16 @@ const defaultResponse = (action, engine, character) => {
   console.log(`${action.name} successful`)
 }
 
-class Action {
+class Action extends NameAndDescription{
   constructor(name) {
-    // assign name to this action
-    this.name = name
-    
-    // set a default description, hopefully will be added later
-    this.description = `This action is the ${name} action. Much amaze`
+    super(name)
+
     // set to a default response
     this.response = defaultResponse
     
     this.availability = (action, engine, character)=>(true)
 
     this.matches = (command) => (name === command)
-  }
-  
- /**
-  * This method sets the name of the action.
-  * This metod is chainable so it returns this object.
-  * @param {string} name 
-  */
-  setActionName(name){
-    this.name = name
-    return this
-  }
-
-  /**
-   * This sets the action description.
-   * @param {string} desc 
-   */
-  setActionDescription(desc){
-    this.description = desc
   }
 
   /**
