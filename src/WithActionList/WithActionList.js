@@ -1,36 +1,45 @@
 const { Action } = require('../Action')
 const {
-  InvalidActionAddedError,
-  ActionNameClashError
-} = require('./PositionErrors')
+  InvalidWithActionListActionAddedError,
+  ActionNameWithActionListClashError
+} = require('./WithActionListErrors')
 
 /**
- * This defines a position in the room.
+ * This defines a withActionList.
  * It can be north, south east west etc. to invoke this usually we will use 
  * the activation word `move to`. This can be defined in the Room object.
  * 
- * The position gets a few actions added here and will be passed the actions from
- * all the parents i.e. Room, level and game
+ * It will be extended by all other objects
  */
 
-// all actions in this Position. This will be tested first
+// all actions in this WithActionList. This will be tested first
 let actions = []
 
-class Position {
+class WithActionList {
   constructor(name) {
     this.name = name
+
+    this.description = `Random room description`
   }
 
   /**
-   * Set the name for this position. This will be used later,
+   * Set the name for this withActionList. This will be used later,
    * probably in the room.
    * 
    * This method is chainable.
    * @param {string} name 
    */
-  setPositionName(name) {
+  setName(name) {
     this.name = name
     return this
+  }
+
+  /**
+   * This is a description of this withActionList. It will be used to oriend the player.
+   * @param {string} desc 
+   */
+  setDescription(desc) {
+    this.description = desc;
   }
 
   /**
@@ -41,12 +50,12 @@ class Position {
     // Check if it's a proper action
     if (!(action instanceof Action)) {
       // if it's an invalid action
-      throw new InvalidActionAddedError()
+      throw new InvalidWithActionListActionAddedError()
     }
 
     // Check if we are getting an action with the same name
     if (!!this.getAction(action.name)) {
-      throw new ActionNameClashError()
+      throw new ActionNameWithActionListClashError()
     }
 
     // Clearly it passed all the checks i could think of
@@ -65,7 +74,7 @@ class Position {
   }
 
   /**
-   * Gets the list of all actions for this position.
+   * Gets the list of all actions for this withActionList.
    */
   get actions() {
     // Just return all actions
@@ -73,4 +82,4 @@ class Position {
   }
 }
 
-module.exports = Position;
+module.exports = WithActionList;
