@@ -26,6 +26,7 @@ class Action extends NameAndDescription{
    */
   setActionResponse(resp){
     this.response = resp
+      return this
   }
 
   /**
@@ -36,6 +37,7 @@ class Action extends NameAndDescription{
   setAvailablity(availability){
     // set the availability to the function passed so it'll be checked
     this.availability = availability
+      return this
   }
 
   /**
@@ -44,6 +46,7 @@ class Action extends NameAndDescription{
    */
   setMatcher(predicate) {
     this.matches = predicate;
+    return this
   }
 }
 

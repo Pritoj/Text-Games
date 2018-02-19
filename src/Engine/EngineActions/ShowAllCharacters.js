@@ -18,7 +18,8 @@ const printCharacters = (obj, title, printer) => {
 }
 
 ShowAvailableCharacters
-  .setActionResponse((action,engine)=>{
+    .setDescription('Shows the characters available')
+  .setActionResponse((command, action,engine)=>{
     printCharacters(engine.game,engine.game.name, engine.print)
     
   })

@@ -17,7 +17,8 @@ const printActions = (obj, title, printer) => {
 }
 
 ShowAvailableActions
-  .setActionResponse((action,engine)=>{
+    .setDescription('Shows all the available actions at a given moment')
+  .setActionResponse((command, action,engine)=>{
     printActions(engine,'all games', engine.print)
     printActions(engine.game, 'this game', engine.print)
     printActions(engine.level, 'this level', engine.print)
