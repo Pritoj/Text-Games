@@ -4,6 +4,7 @@ class InventoryItem {
     this.key = key
     this.name = key
     this.description = key
+    this.type = null
     this.value = null;
   }
 
@@ -24,6 +25,11 @@ class InventoryItem {
 
   setValue(value){
     this.value = value;
+    return this;
+  }
+
+  setType(type){
+    this.type = type;
     return this;
   }
 }

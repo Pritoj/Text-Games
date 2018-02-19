@@ -6,6 +6,8 @@ let Tutorial = new Game('Game Engine Tutorial')
 
 Tutorial
   .setDescription(`
+    This is my uninspired game, because I couldn't think of anything better.
+    
     This will help you get a hang of the engine for a bit.
     Currently you are in the start phase.
 

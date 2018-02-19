@@ -11,6 +11,16 @@ class Game extends NameAndDescription{
     this.characters = new ObjectList(Character, 'name')
     this.levels = new ObjectList(Level, 'name')
   }
+
+  addAction(action) {
+    this.actions.list.push(action)
+    return this
+  }
+
+  addCharacter(character) {
+    this.characters.list.push(character)
+    return this
+  }
 }
 
 module.exports = Game

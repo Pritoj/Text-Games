@@ -11,6 +11,7 @@
 
 const { Engine } = require('./src/Engine')
 const { Tutorial } = require('./games/Tutorial')
+const { GoT } = require('./games/GoT')
 
-let newGame = new Engine(Tutorial);
+let newGame = new Engine(GoT);
 newGame.start();
